@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tổng hợp Lab 1 & 2 - Full CSS Effects</title>
+    <style>
+        /* --- 1. BIẾN MÀU SẮC (Đổi màu xanh tại đây) --- */
+        :root {
+            --primary-blue: #007bff;      /* Màu xanh chính */
+            --dark-blue: #0056b3;         /* Màu xanh đậm khi hover */
+            --light-blue: #e7f1ff;        /* Màu nền xanh nhạt */
+            --bg-body: #f8f9fa;
+            --text-color: #333;
+        }
+
+        /* --- 2. THIẾT KẾ TỔNG THỂ --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            /* Hiệu ứng load trang */
+            animation: fadeInPage 1.2s ease-out forwards;
+        }
+
+        @keyframes fadeInPage {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        section {
+            background: #fff;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            border-left: 6px solid var(--primary-blue);
+            padding-left: 15px;
+            margin-bottom: 25px;
+        }
+
+        /* --- BÀI 1: TEXT CHẠY (MARQUEE) --- */
+        .marquee-container {
+            background: var(--light-blue);
+            overflow: hidden;
+            padding: 15px 0;
+            border-radius: 10px;
+        }
+        .marquee-text {
+            display: inline-block;
+            white-space: nowrap;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--dark-blue);
+            animation: marqueeEffect 12s linear infinite;
+        }
+        @keyframes marqueeEffect {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
+        /* --- BÀI 2: HỘP QUAY (ROTATE LOOP) --- */
+        .box-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+        }
+        .box {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-blue);
+            border-radius: 12px;
+            animation: rotateLoop 2.5s ease-in-out infinite alternate;
+        }
+        .box:nth-child(2) { animation-delay: 0.2s; opacity: 0.8; }
+        .box:nth-child(3) { animation-delay: 0.4s; opacity: 0.6; }
+        .box:nth-child(4) { animation-delay: 0.6s; opacity: 0.4; }
+
+        @keyframes rotateLoop {
+            0% { transform: rotate(-25deg) scale(0.9); }
+            100% { transform: rotate(25deg) scale(1.1); }
+        }
+
+        /* --- BÀI 3: GALLERY FADE-IN SEQUENCE --- */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+            transition: 0.4s;
+        }
+        .gallery img:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 15px 30px rgba(0,123,255,0.3);
+        }
+        .gallery img:nth-child(1) { animation-delay: 0.3s; }
+        .gallery img:nth-child(2) { animation-delay: 0.6s; }
+        .gallery img:nth-child(3) { animation-delay: 0.9s; }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- BÀI 4: CALL TO ACTION (BLINK) --- */
+        .cta-box { text-align: center; padding: 20px; }
+        .btn-cta {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 18px 50px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            animation: pulseBlue 2s infinite;
+        }
+        @keyframes pulseBlue {
+            0% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(0, 123, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0); }
+        }
+
+        /* --- BÀI 5: AUTO SLIDER --- */
+        .slider-frame {
+            width: 100%;
+            max-width: 600px;
+            height: 350px;
+            margin: 0 auto;
+            overflow: hidden;
+            border: 5px solid var(--primary-blue);
+            border-radius: 20px;
+        }
+        .slider-track {
+            display: flex;
+            width: 300%;
+            animation: slideShow 10s infinite;
+        }
+        .slider-track img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+        @keyframes slideShow {
+            0%, 25% { transform: translateX(0); }
+            33%, 58% { transform: translateX(-33.33%); }
+            66%, 91% { transform: translateX(-66.66%); }
+            100% { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 style="text-align: center; margin-bottom: 40px;">Lab Tổng Hợp: Keyframes & Hover</h1>
+
+    <section>
+        <h2>Bài 1: Marquee Chữ Chạy</h2>
+        <div class="marquee-container">
+            <div class="marquee-text">
+                Chào mừng bạn đến với website thực hành CSS Animation - Tone màu xanh dương chuyên nghiệp!
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Bài 2: Hiệu ứng Hộp Quay (Rotate Loop)</h2>
+        <div class="box-container">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Bài 3: Gallery Ảnh Xuất Hiện Dần</h2>
+        <div class="gallery">
+            <img src="https://picsum.photos/id/10/500/300" alt="Ảnh 1">
+            <img src="https://picsum.photos/id/20/500/300" alt="Ảnh 2">
+            <img src="https://picsum.photos/id/30/500/300" alt="Ảnh 3">
+        </div>
+    </section>
+
+    <section class="cta-box">
+        <h2>Bài 4: Nút Mua Ngay (Pulse Effect)</h2>
+        <button class="btn-cta">MUA NGAY</button>
+    </section>
+
+    <section>
+        <h2>Bài 5: Slider Tự Động Chạy</h2>
+        <div class="slider-frame">
+            <div class="slider-track">
+                <img src="https://picsum.photos/id/101/600/400" alt="Slide 1">
+                <img src="https://picsum.photos/id/102/600/400" alt="Slide 2">
+                <img src="https://picsum.photos/id/103/600/400" alt="Slide 3">
+            </div>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
+ <section>
+        <h2>Bài 5.2: Hình chuyển đổi </h2>
+        <div class="image-box">
+            <img src="https://picsum.photos/id/1011/800/500" alt="Sea View">
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
