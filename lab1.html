@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MINH KIÊN MU KICKS - Players & Store</title>
+    <style>
+        /* 1. RESET & BASE STYLES */
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Segoe UI', Roboto, sans-serif; background-color: #0a0a0a; color: white; line-height: 1.6; overflow-x: hidden; }
+        
+        /* 2. DÒNG CHỮ CHẠY NGANG */
+        .marquee-container {
+            background: #da291c; color: white; overflow: hidden; white-space: nowrap;
+            padding: 12px 0; font-weight: bold; text-transform: uppercase; font-size: 0.9rem;
+            border-bottom: 2px solid #fbe122;
+        }
+        .marquee-text {
+            display: inline-block; padding-left: 100%; animation: marquee 20s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+
+        /* 3. HEADER */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 5%; background: rgba(26, 26, 26, 0.95); backdrop-filter: blur(10px);
+            border-bottom: 2px solid #da291c; position: sticky; top: 0; z-index: 1000;
+        }
+        .logo-container { display: flex; align-items: center; gap: 12px; }
+        .logo-container img { width: 45px; height: 45px; object-fit: contain; }
+        .logo-container h1 { color: #da291c; font-size: 1.4rem; letter-spacing: 1px; font-weight: 900; }
+
+        nav a { margin: 0 15px; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; color: #eee; text-decoration: none; }
+        nav a:hover { color: #da291c; }
+
+        /* 4. HERO SECTION */
+        .hero {
+            height: 40vh; 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(10,10,10,1)), url('lab1/app/assets/images/download (3).jpg');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+        }
+
+        /* 5. PHẦN GIỚI THIỆU CẦU THỦ (MỚI) */
+        .players-section { padding: 60px 5%; background: #0a0a0a; }
+        .player-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 30px; max-width: 1200px; margin: 0 auto; 
+        }
+        .player-card {
+            background: #151515; border-radius: 15px; padding: 25px;
+            text-align: center; border: 1px solid #222; transition: 0.4s;
+            position: relative; overflow: hidden;
+        }
+        .player-card:hover { border-color: #da291c; transform: translateY(-10px); }
+        /* Tạo khung ảnh đại diện bằng CSS (không cần link ảnh) */
+        .player-avatar-placeholder {
+            width: 120px; height: 120px; background: #222; border-radius: 50%;
+            margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;
+            font-size: 2.5rem; color: #da291c; border: 3px solid #da291c;
+        }
+        .player-card h3 { font-size: 1.5rem; color: #fff; text-transform: uppercase; margin-bottom: 5px; }
+        .player-position { color: #da291c; font-weight: bold; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 15px; display: block; }
+        .player-desc { font-size: 0.9rem; color: #aaa; text-align: justify; }
+
+        /* 6. NEWS & PRODUCTS STYLES (Giữ nguyên từ bản trước) */
+        .section-title { font-size: 2rem; margin-bottom: 40px; text-align: center; text-transform: uppercase; }
+        .section-title span { color: #da291c; }
+        
+        /* 7. FORM & MEMBERSHIP STYLES */
+        .member-section { padding: 60px 5%; background: #111; }
+        .member-card-ui { max-width: 900px; margin: 0 auto; background: #0a0a0a; border-radius: 20px; display: flex; flex-wrap: wrap; border: 1px solid #da291c; }
+        .member-info-box { flex: 1; padding: 40px; background: #da291c; color: white; }
+        .member-form-box { flex: 1.2; padding: 40px; }
+        .reg-form { display: grid; gap: 15px; }
+        .reg-form input, .reg-form select { padding: 12px; background: #222; border: 1px solid #333; color: white; border-radius: 5px; }
+        .btn-reg { padding: 15px; background: #da291c; color: white; border: none; font-weight: bold; cursor: pointer; }
+
+        footer { text-align: center; padding: 40px; color: #444; border-top: 1px solid #1a1a1a; }
+    </style>
+</head>
+<body>
+
+    <div class="marquee-container">
+        <div class="marquee-text">
+            🔥 KOBBIE MAINOO - TƯƠNG LAI CỦA TUYẾN GIỮA QUỶ ĐỎ 🔥 MICHAEL CARRICK DẪN DẮT MU ĐẾN CHIẾN THẮNG 🔥 ĐĂNG KÝ THÀNH VIÊN ĐỂ NHẬN ƯU ĐÃI ĐỘC QUYỀN 🔥
+        </div>
+    </div>
+
+    <header>
+        <div class="logo-container">
+            <img src="lab1/app/assets/images/download (1).jpg" alt="MU Logo"> 
+            <h1>MINH KIÊN MU KICKS</h1>
+        </div>
+        <nav>
+            <a href="#home">Trang chủ</a>
+            <a href="#players">Cầu thủ</a>
+            <a href="#news">Tin tức</a>
+            <a href="#products">Cửa hàng</a>
+            <a href="#membership">Thành viên</a>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h2>LEGENDS ARE BORN HERE</h2>
+        <p>KHÁM PHÁ NHỮNG BIỂU TƯỢNG CỦA OLD TRAFFORD</p>
+    </section>
+
+    <section id="players" class="players-section">
+        <h2 class="section-title">Ngôi Sao <span>Quỷ Đỏ</span></h2>
+        <div class="player-grid">
+            <article class="player-card">
+                <div class="player-avatar-placeholder">37</div>
+                <h3>Kobbie Mainoo</h3>
+                <span class="player-position">TIỀN VỆ TRUNG TÂM</span>
+                <p class="player-desc">Tài năng trẻ sáng giá nhất hiện nay, sở hữu kỹ năng thoát pressing thượng thừa và vừa gây sốt trong trận Derby Manchester với những pha xử lý đẳng cấp.</p>
+            </article>
+
+            <article class="player-card">
+                <div class="player-avatar-placeholder">8</div>
+                <h3>Bruno Fernandes</h3>
+                <span class="player-position">TIỀN VỆ TẤN CÔNG</span>
+                <p class="player-desc">Người đội trưởng mẫu mực, "linh hồn" trong lối chơi của Man Utd với khả năng kiến tạo và tinh thần chiến đấu không bao giờ bỏ cuộc.</p>
+            </article>
+
+            <article class="player-card">
+                <div class="player-avatar-placeholder">10</div>
+                <h3>Marcus Rashford</h3>
+                <span class="player-position">TIỀN ĐẠO CÁNH</span>
+                <p class="player-desc">Biểu tượng của lò đào tạo Carrington, sở hữu tốc độ xé gió và những cú sút xa đầy uy lực mang lại cảm xúc vỡ òa tại Old Trafford.</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="membership" class="member-section">
+        <h2 class="section-title">Gia Nhập <span>Red Club</span></h2>
+        <div class="member-card-ui">
+            <div class="member-info-box">
+                <h2>QUYỀN LỢI VIP</h2>
+                <p>Nhận ngay bộ quà tặng chào mừng và voucher giảm giá độc quyền.</p>
+                <ul style="margin-top: 15px; list-style: none;">
+                    <li>⭐ Cập nhật tin tức sớm nhất</li>
+                    <li>⭐ Ưu đãi 10% cho thành viên</li>
+                </ul>
+            </div>
+            <div class="member-form-box">
+                <form class="reg-form">
+                    <input type="text" placeholder="Tên của bạn" required>
+                    <input type="email" placeholder="Email nhận tin" required>
+                    <select>
+                        <option>Bạn hâm mộ cầu thủ nào nhất?</option>
+                        <option>Kobbie Mainoo</option>
+                        <option>Bruno Fernandes</option>
+                        <option>Marcus Rashford</option>
+                    </select>
+                    <button type="submit" class="btn-reg">ĐĂNG KÝ NGAY</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 MINH KIÊN - MANCHESTER UNITED KICKS STORE PROJECT.
+    </footer>
+
+</body>
+</html>
